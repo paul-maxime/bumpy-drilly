@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Gem.wav-8606752d175899b1bbc4ca439bc8e48e.sample"
+path="res://.import/Ore.wav-ab5ee4f560523974d92f2872db72f934.sample"
 
 [deps]
 
-source_file="res://Sounds/Gem.wav"
-dest_files=[ "res://.import/Gem.wav-8606752d175899b1bbc4ca439bc8e48e.sample" ]
+source_file="res://Sounds/Ore.wav"
+dest_files=[ "res://.import/Ore.wav-ab5ee4f560523974d92f2872db72f934.sample" ]
 
 [params]
 

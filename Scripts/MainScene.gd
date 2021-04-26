@@ -2,6 +2,7 @@ extends Node2D
 
 var block_scene = preload("res://Scenes/Block.tscn")
 var break_particles_scene = preload("res://Scenes/BreakParticles.tscn")
+var floating_text = preload("res://Scenes/FloatingText.tscn")
 
 var tex_block = preload("res://Textures/Block.png")
 var tex_cooper = preload("res://Textures/BlockCooper.png")
@@ -31,7 +32,6 @@ var player_rotation: float
 var rotation_step: float
 
 var drill_sound_player
-var sound_player
 
 var money: int = 0
 var current_upgrade: int = 0
@@ -42,7 +42,6 @@ func _ready():
 	player = get_node("Robot")
 	player_light = get_node("Robot/Light2D")
 	drill_sound_player = get_node("DrillSoundPlayer")
-	sound_player = get_node("SoundPlayer")
 	upgrade_button = get_node("CanvasLayer/UpgradeButton")
 	player.position = Vector2(block_size.x * (MAP_WIDTH / 2.0), block_size.y * -1) + block_size / 2.0
 	player_destination = player.position
@@ -171,10 +170,21 @@ func break_block_step(pos):
 
 func break_block_end(pos):
 	if map[pos.x][pos.y].texture != tex_block:
-		money += get_money_from_tex(map[pos.x][pos.y].texture)
-		sound_player.play()
+		var block_money = get_money_from_tex(map[pos.x][pos.y].texture)
+		money += block_money
+		create_floating_text(pos, "$ " + str(block_money), "ore")
 	map[pos.x][pos.y].queue_free()
 	map[pos.x][pos.y] = null
+
+func create_floating_text(pos: Vector2, text: String, type: String):
+	var floating_text_instance: Node2D = floating_text.instance()
+	floating_text_instance.set_text(text)
+	floating_text_instance.position = pos * block_size + Vector2(block_size.x, 0) / 2
+	floating_text_instance.set_sound(type)
+	match type:
+		"upgrade":
+			floating_text_instance.lifespan = 3.0
+	add_child(floating_text_instance)
 
 func generate_world():
 	for x in range(MAP_WIDTH):
@@ -244,8 +254,11 @@ func update_upgrade_price():
 	upgrade_button.text = "Upgrade: $" + str(get_upgrade_price())
 
 func purchase_upgrade():
-	if money >= get_upgrade_price():
-		money -= get_upgrade_price()
-		current_upgrade += 1
-		update_upgrade_price()
-		update_light()
+	if money < get_upgrade_price():
+		create_floating_text(player.get_block_position(), "Not enough money", "none")
+		return
+	money -= get_upgrade_price()
+	current_upgrade += 1
+	update_upgrade_price()
+	update_light()
+	create_floating_text(player.get_block_position(), "Mining speed increased\nVision increased", "upgrade")

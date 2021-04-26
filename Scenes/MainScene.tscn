@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/Robot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sounds/Drill.ogg" type="AudioStream" id=2]
 [ext_resource path="res://Scripts/MainScene.gd" type="Script" id=3]
-[ext_resource path="res://Sounds/Gem.wav" type="AudioStream" id=4]
+[ext_resource path="res://Scripts/UpgradeButton.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/TextPosition.gd" type="Script" id=5]
 [ext_resource path="res://Fonts/UbuntuMono.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Scripts/TextMoney.gd" type="Script" id=7]
@@ -47,8 +47,7 @@ custom_colors/font_color_shadow = Color( 0.0784314, 0.0470588, 0.109804, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 custom_constants/shadow_as_outline = 1
-text = "Money
-"
+text = "Money"
 align = 2
 script = ExtResource( 7 )
 __meta__ = {
@@ -60,9 +59,13 @@ anchor_left = 0.5
 anchor_right = 0.5
 margin_top = 4.0
 grow_horizontal = 2
+hint_tooltip = "Increases vision and mining speed.
+Click or press U to upgrade."
+mouse_default_cursor_shape = 2
 theme = SubResource( 1 )
 custom_fonts/font = ExtResource( 6 )
 text = "Buy upgrade"
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -71,10 +74,6 @@ __meta__ = {
 stream = ExtResource( 2 )
 volume_db = 1.0
 pitch_scale = 0.3
-
-[node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
-volume_db = 1.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0, 0, 0, 1 )
