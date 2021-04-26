@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Robot.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sounds/Drill.ogg" type="AudioStream" id=2]
@@ -8,22 +8,93 @@
 [ext_resource path="res://Fonts/UbuntuMono.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Scripts/TextMoney.gd" type="Script" id=7]
 [ext_resource path="res://Sounds/dark_fantasy_studio_dystopia_seamless.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Scenes/RobotChild.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Theme" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.188235, 0.203922, 0.427451, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.521569, 0.584314, 0.631373, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.188235, 0.203922, 0.427451, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.521569, 0.584314, 0.631373, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.188235, 0.203922, 0.427451, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.521569, 0.584314, 0.631373, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.188235, 0.203922, 0.427451, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.521569, 0.584314, 0.631373, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 3 )
 
 [node name="Robot" parent="." instance=ExtResource( 1 )]
 
+[node name="RobotChild" parent="." instance=ExtResource( 9 )]
+frame = 0
+
 [node name="World" type="Node2D" parent="."]
 z_index = -1
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0, 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DepthLabel" type="Label" parent="CanvasLayer"]
-margin_left = 4.0
-margin_top = 4.0
+margin_left = 8.0
+margin_top = 8.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.870588, 0.933333, 0.839216, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
@@ -39,8 +110,8 @@ __meta__ = {
 
 [node name="MoneyLabel" type="Label" parent="CanvasLayer"]
 anchor_right = 1.0
-margin_top = 4.0
-margin_right = -4.0
+margin_top = 8.0
+margin_right = -8.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.870588, 0.933333, 0.839216, 1 )
 custom_colors/font_color_shadow = Color( 0.0784314, 0.0470588, 0.109804, 1 )
@@ -57,26 +128,40 @@ __meta__ = {
 [node name="UpgradeButton" type="Button" parent="CanvasLayer"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_top = 4.0
+margin_top = 8.0
 grow_horizontal = 2
 hint_tooltip = "Increases vision and mining speed.
 Click or press U to upgrade."
 mouse_default_cursor_shape = 2
 theme = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.870588, 0.933333, 0.839216, 1 )
+custom_colors/font_color_hover = Color( 0.521569, 0.584314, 0.631373, 1 )
+custom_colors/font_color_pressed = Color( 0.870588, 0.933333, 0.839216, 1 )
 text = "Buy upgrade"
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="FadeOutRectangle" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0784314, 0.0470588, 0.109804, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="DrillSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
-volume_db = 1.0
+volume_db = 2.0
 pitch_scale = 0.3
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0, 0, 0, 1 )
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )

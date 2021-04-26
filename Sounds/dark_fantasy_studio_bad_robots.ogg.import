@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/dark_fantasy_studio_bad_robots.ogg-e02c9259e49f8b7dcb5e4ddb9e553d44.oggstr"
+
+[deps]
+
+source_file="res://Sounds/dark_fantasy_studio_bad_robots.ogg"
+dest_files=[ "res://.import/dark_fantasy_studio_bad_robots.ogg-e02c9259e49f8b7dcb5e4ddb9e553d44.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

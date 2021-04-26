@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Textures/Robot.aseprite" type="SpriteFrames" id=1]
+[ext_resource path="res://Textures/RobotChild.aseprite" type="SpriteFrames" id=2]
+[ext_resource path="res://Fonts/UbuntuMono.tres" type="DynamicFont" id=3]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Robot" type="AnimatedSprite" parent="."]
+position = Vector2( 395.221, 245.542 )
+frames = ExtResource( 1 )
+animation = "Idle"
+frame = 5
+playing = true
+
+[node name="Camera2D" type="Camera2D" parent="Robot"]
+current = true
+
+[node name="RobotChild" type="AnimatedSprite" parent="Robot"]
+position = Vector2( 60, 0 )
+frames = ExtResource( 2 )
+animation = "Idle"
+frame = 4
+playing = true
+flip_h = true
+
+[node name="Label" type="Label" parent="Robot"]
+margin_left = -1000.0
+margin_top = -120.0
+margin_right = 1000.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.870588, 0.933333, 0.839216, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.0784314, 0.0470588, 0.109804, 1 )
+text = "You win!
+You rescued the lost child!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
