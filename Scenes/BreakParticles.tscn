@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Particles.gd" type="Script" id=1]
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+z_index = 5
+amount = 150
+emission_shape = 2
+emission_rect_extents = Vector2( 48, 32 )
+spread = 180.0
+gravity = Vector2( 0, 400 )
+initial_velocity = 100.0
+scale_amount = 6.0
+scale_amount_random = 1.0
+color = Color( 0.305882, 0.290196, 0.305882, 1 )
+hue_variation = 0.05
+hue_variation_random = 1.0
+script = ExtResource( 1 )
