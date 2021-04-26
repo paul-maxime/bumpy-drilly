@@ -11,8 +11,8 @@ var tex_sapphire = preload("res://Textures/BlockSapphire.png")
 var tex_emerald = preload("res://Textures/BlockEmerald.png")
 var tex_ruby = preload("res://Textures/BlockRuby.png")
 
-const MAP_WIDTH = 100
-const MAP_HEIGHT = 100
+const MAP_WIDTH: int = 100
+const MAP_HEIGHT: int = 100
 
 const PLAYER_SPEED = 96.0 * 3
 const MINING_SPEED = 96.0
@@ -44,14 +44,15 @@ func _ready():
 	drill_sound_player = get_node("DrillSoundPlayer")
 	sound_player = get_node("SoundPlayer")
 	upgrade_button = get_node("CanvasLayer/UpgradeButton")
-	player.position = Vector2(block_size.x * (MAP_WIDTH / 2), block_size.y * -1) + block_size / 2
+	player.position = Vector2(block_size.x * (MAP_WIDTH / 2.0), block_size.y * -1) + block_size / 2.0
 	player_destination = player.position
 	player_rotation = player.rotation
 	update_light()
 	update_upgrade_price()
 	upgrade_button.connect("pressed", self, "purchase_upgrade")
+	player.play()
 
-func _input(event):
+func _input(_event):
 	pass
 
 func _process(delta):
@@ -98,11 +99,12 @@ func process_mouse_movement():
 			move_player(Vector2(0, -1))
 
 func process_drilling_animation():
-	if player_is_mining and !player.playing:
+	if player_is_mining and player.animation != "Mining":
+		player.animation = "Mining"
 		player.play()
-	if !player_is_mining and player.playing:
-		player.stop()
-		player.frame = 0
+	if !player_is_mining and player.animation != "Idle":
+		player.animation = "Idle"
+		player.play()
 
 	if player_is_mining:
 		if !drill_sound_player.is_playing():

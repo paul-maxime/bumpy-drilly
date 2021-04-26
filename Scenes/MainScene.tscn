@@ -15,7 +15,6 @@
 script = ExtResource( 3 )
 
 [node name="Robot" parent="." instance=ExtResource( 1 )]
-frame = 1
 
 [node name="World" type="Node2D" parent="."]
 z_index = -1
