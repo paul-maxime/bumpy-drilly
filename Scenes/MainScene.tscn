@@ -80,8 +80,10 @@ expand_margin_bottom = 4.0
 script = ExtResource( 3 )
 
 [node name="Robot" parent="." instance=ExtResource( 1 )]
+animation = "default"
 
 [node name="RobotChild" parent="." instance=ExtResource( 9 )]
+animation = "default"
 frame = 0
 
 [node name="World" type="Node2D" parent="."]
@@ -95,13 +97,13 @@ color = Color( 0, 0, 0, 1 )
 [node name="DepthLabel" type="Label" parent="CanvasLayer"]
 margin_left = 8.0
 margin_top = 8.0
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.870588, 0.933333, 0.839216, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.0784314, 0.0470588, 0.109804, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 custom_constants/shadow_as_outline = 1
+custom_fonts/font = ExtResource( 6 )
 text = "Depth"
 script = ExtResource( 5 )
 __meta__ = {
@@ -112,12 +114,12 @@ __meta__ = {
 anchor_right = 1.0
 margin_top = 8.0
 margin_right = -8.0
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.870588, 0.933333, 0.839216, 1 )
 custom_colors/font_color_shadow = Color( 0.0784314, 0.0470588, 0.109804, 1 )
 custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 1
 custom_constants/shadow_as_outline = 1
+custom_fonts/font = ExtResource( 6 )
 text = "Money"
 align = 2
 script = ExtResource( 7 )
@@ -134,15 +136,15 @@ hint_tooltip = "Increases vision and mining speed.
 Click or press U to upgrade."
 mouse_default_cursor_shape = 2
 theme = SubResource( 1 )
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.870588, 0.933333, 0.839216, 1 )
 custom_colors/font_color_hover = Color( 0.521569, 0.584314, 0.631373, 1 )
 custom_colors/font_color_pressed = Color( 0.870588, 0.933333, 0.839216, 1 )
+custom_fonts/font = ExtResource( 6 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 text = "Buy upgrade"
 script = ExtResource( 4 )
 __meta__ = {

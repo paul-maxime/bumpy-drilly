@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BlockMalachite.png-3384dce48dd6ea3488d4c16dacd71d62.stex"
+path="res://.import/RobotChild.png-393db7a1d7c6a8ea935b7beb926485f3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/BlockMalachite.png"
-dest_files=[ "res://.import/BlockMalachite.png-3384dce48dd6ea3488d4c16dacd71d62.stex" ]
+source_file="res://Textures/RobotChild.png"
+dest_files=[ "res://.import/RobotChild.png-393db7a1d7c6a8ea935b7beb926485f3.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
